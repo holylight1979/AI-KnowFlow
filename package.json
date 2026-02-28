@@ -7,21 +7,29 @@
   "main": "dist/pipeline.js",
   "types": "dist/pipeline.d.ts",
   "bin": {
-    "consciousness-stream": "./dist/src/cli.js"
+    "consciousness-stream": "./dist/src/cli.js",
+    "consciousness-stream-mcp": "./dist/src/mcp.js"
   },
   "exports": {
     ".": "./dist/src/pipeline.js",
     "./types": "./dist/src/types.js",
+    "./perception": "./dist/src/perception.js",
+    "./mcp": "./dist/src/mcp.js",
     "./layers/*": "./dist/src/layers/*.js"
   },
   "scripts": {
     "build": "tsc",
-    "test": "node --test dist/test/pipeline.test.js dist/test/cli.test.js",
+    "test": "node --test dist/test/pipeline.test.js dist/test/cli.test.js dist/test/mcp.test.js",
     "start": "node dist/src/cli.js",
+    "start:mcp": "node dist/src/mcp.js",
     "dev": "tsc --watch"
   },
   "devDependencies": {
     "@types/node": "^25.3.2",
     "typescript": "^5.7"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "zod": "^4.3.6"
   }
 }
