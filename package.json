@@ -1,0 +1,27 @@
+{
+  "name": "consciousness-stream",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "九層識流管線引擎 — 基於佛教八識體系的 AI Agent 結構化處理框架",
+  "main": "dist/pipeline.js",
+  "types": "dist/pipeline.d.ts",
+  "bin": {
+    "consciousness-stream": "./dist/src/cli.js"
+  },
+  "exports": {
+    ".": "./dist/src/pipeline.js",
+    "./types": "./dist/src/types.js",
+    "./layers/*": "./dist/src/layers/*.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test dist/test/pipeline.test.js dist/test/cli.test.js",
+    "start": "node dist/src/cli.js",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.2",
+    "typescript": "^5.7"
+  }
+}

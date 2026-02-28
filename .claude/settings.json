@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npx tsc)",
+      "Bash(npm install --save-dev @types/node)",
+      "Bash(node --test dist/test/pipeline.test.js)",
+      "Bash(npm run build)",
+      "Bash(npm test)"
+    ]
+  }
+}
