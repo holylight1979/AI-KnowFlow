@@ -9,57 +9,14 @@
  */
 
 import { parseArgs } from 'node:util';
-import { readFileSync, existsSync } from 'node:fs';
-import { execSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 
 import { runPipeline } from './pipeline.js';
 import { AnthropicLlm } from './llm.js';
 import { FileMemoryAdapter, NullMemoryAdapter } from './memory.js';
-import type { PerceptionAdapter, PipelineMode } from './types.js';
-
-// ===== CLI Perception Adapter =====
-
-const MAX_FILE_SIZE = 10 * 1024; // 10KB per file
-
-class CliPerceptionAdapter implements PerceptionAdapter {
-  constructor(private cwd: string) {}
-
-  async readFiles(patterns: string[]): Promise<string[]> {
-    const results: string[] = [];
-    for (const pattern of patterns) {
-      const filePath = resolve(this.cwd, pattern);
-      if (!existsSync(filePath)) {
-        results.push(`(檔案不存在: ${pattern})`);
-        continue;
-      }
-      try {
-        const content = readFileSync(filePath, 'utf-8');
-        results.push(
-          content.length > MAX_FILE_SIZE
-            ? content.slice(0, MAX_FILE_SIZE) + `\n... (截斷, 原始 ${content.length} bytes)`
-            : content,
-        );
-      } catch {
-        results.push(`(無法讀取: ${pattern})`);
-      }
-    }
-    return results;
-  }
-
-  async getEnvState(): Promise<string> {
-    const parts: string[] = [`platform: ${process.platform}`];
-    try {
-      const branch = execSync('git branch --show-current', { cwd: this.cwd, encoding: 'utf-8' }).trim();
-      const status = execSync('git status --porcelain', { cwd: this.cwd, encoding: 'utf-8' }).trim();
-      parts.push(`git branch: ${branch}`);
-      parts.push(`git status: ${status || '(clean)'}`);
-    } catch {
-      parts.push('git: not a repository');
-    }
-    return parts.join('\n');
-  }
-}
+import { FilePerceptionAdapter } from './perception.js';
+import type { PipelineMode } from './types.js';
 
 // ===== Argument Parsing =====
 
@@ -159,7 +116,7 @@ async function main(): Promise<void> {
   const memory = hasAIDocs
     ? new FileMemoryAdapter(memoryRoot)
     : new NullMemoryAdapter();
-  const perception = new CliPerceptionAdapter(memoryRoot);
+  const perception = new FilePerceptionAdapter(memoryRoot);
 
   process.stderr.write(`識流管線啟動 — ${task.slice(0, 60)}${task.length > 60 ? '…' : ''}\n`);
 

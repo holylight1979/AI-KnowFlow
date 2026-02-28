@@ -172,3 +172,4 @@ export { formatReport } from './report.js';
 export type { PipelineState, PipelineResult, PipelineConfig } from './types.js';
 export { PassthroughLlm, AnthropicLlm } from './llm.js';
 export { FileMemoryAdapter, NullMemoryAdapter } from './memory.js';
+export { FilePerceptionAdapter } from './perception.js';
