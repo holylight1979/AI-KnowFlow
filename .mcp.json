@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "consciousness-stream": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["./dist/src/mcp.js"],
+      "env": {
+        "CONSCIOUSNESS_STREAM_MEMORY_ROOT": "."
+      }
+    }
+  }
+}

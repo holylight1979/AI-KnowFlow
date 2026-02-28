@@ -22,7 +22,15 @@
 - **他空見**: 直指心性本淨，確認方向 — 本地能力是「不空」，過度依賴是「空」
 - **密宗光明心**: 覺性本具，去蔽即覺
 
+## 使用方式
+
+- **Library**: `import { runPipeline } from 'consciousness-stream'`
+- **CLI**: `consciousness-stream "任務描述"` (需 ANTHROPIC_API_KEY)
+- **MCP Server**: `consciousness-stream-mcp` (stdio, 需 ANTHROPIC_API_KEY)
+  - Tool: `consciousness_stream` — 執行識流管線
+  - Tool: `list_atoms` — 列出記憶 atoms
+- **Claude Code Skill**: `~/.claude/commands/consciousness-stream.md`
+
 ## 相關專案
 
 - **OpenClaw**: `E:\OpenClawWorkSpace` — 主系統
-- **Claude Code Skill**: `~/.claude/commands/consciousness-stream.md`

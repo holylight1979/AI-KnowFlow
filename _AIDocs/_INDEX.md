@@ -18,5 +18,9 @@
 | `../src/report.ts` | 識流報告 markdown 格式化 | 2026-03-01 |
 | `../src/layers/*.ts` | 九層管線實作（sparsa→vasana，各一檔） | 2026-03-01 |
 | `../src/cli.ts` | CLI 入口（獨立執行識流管線） | 2026-03-01 |
+| `../src/perception.ts` | 感知 Adapter（CLI/MCP 共用） | 2026-03-01 |
+| `../src/mcp.ts` | MCP Server 入口（consciousness_stream + list_atoms） | 2026-03-01 |
 | `../test/pipeline.test.ts` | 管線測試（mock LLM，9 cases） | 2026-03-01 |
 | `../test/cli.test.ts` | CLI 元件測試（parseCliArgs，9 cases） | 2026-03-01 |
+| `../test/mcp.test.ts` | MCP tool handler 測試（7 cases） | 2026-03-01 |
+| `../.mcp.json` | MCP Server 配置 | 2026-03-01 |

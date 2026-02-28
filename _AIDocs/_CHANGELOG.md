@@ -1,5 +1,15 @@
 # _CHANGELOG — 識流專案
 
+## 2026-03-01 — Phase 3: MCP Server
+
+- 提取 CliPerceptionAdapter → FilePerceptionAdapter 共用模組 (src/perception.ts)
+- 新增 MCP Server (src/mcp.ts)：暴露 consciousness_stream + list_atoms 兩個 tool
+- 使用 @modelcontextprotocol/sdk (stdio transport) + zod
+- Tool handler 函式 export 供測試直接呼叫
+- 新增 MCP 測試 (7 cases)，總測試 25 cases 全通過
+- 更新 package.json: bin/exports/scripts + runtime deps
+- 新增 .mcp.json 專案 MCP 配置
+
 ## 2026-03-01 — Phase 2: 增強 Skill + CLI
 
 - 新增 CLI 入口（src/cli.ts）：AnthropicLlm + FileMemoryAdapter + CliPerceptionAdapter
