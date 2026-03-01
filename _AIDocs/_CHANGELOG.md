@@ -1,5 +1,12 @@
 # _CHANGELOG — 識流專案
 
+## 2026-03-01 — Phase 4: OpenClaw 整合
+
+- 在 OpenClaw `.mcp.json` 加入 consciousness-stream MCP server
+- 建立 `skills/consciousness-stream/` Skill 包裝（SKILL.md + _meta.json + .clawhub）
+- 僅關鍵字觸發（「透過識流進行…」/「用識流處理…」），不影響其他功能
+- Memory root 指向 OpenClaw workspace
+
 ## 2026-03-01 — Phase 3: MCP Server
 
 - 提取 CliPerceptionAdapter → FilePerceptionAdapter 共用模組 (src/perception.ts)
